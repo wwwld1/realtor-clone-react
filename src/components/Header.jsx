@@ -16,7 +16,7 @@ export default function Header() {
         setPageState('Sign in')
       }
     })
-  })
+  }, [auth])
   function pathMatchRoute(route) {
     return route === location.pathname
   }
