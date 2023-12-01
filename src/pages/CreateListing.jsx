@@ -93,7 +93,7 @@ export default function CreateListing() {
       // fetch data from google api
       const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`)
       const data = await response.json()
-      console.log(data)
+
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
       geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
 
@@ -119,18 +119,7 @@ export default function CreateListing() {
 
         uploadTask.on(
           `state_changed`,
-          snapshot => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            console.log('Upload is ' + progress + '% done')
-            switch (snapshot.state) {
-              case 'paused':
-                console.log('Upload is paused')
-                break
-              case 'running':
-                console.log('Upload is running')
-                break
-            }
-          },
+          snapshot => { },
           error => {
             reject(error)
           },
